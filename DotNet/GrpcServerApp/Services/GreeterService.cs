@@ -1,6 +1,7 @@
 using Grpc.Core;
+using GrpcServerApp;
 
-namespace GrpcServer.Services;
+namespace GrpcServerApp.Services;
 
 public class GreeterService : Greeter.GreeterBase
 {
@@ -13,6 +14,7 @@ public class GreeterService : Greeter.GreeterBase
 
     public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
     {
+        _logger.LogInformation($"Request is received: {request.Name}");
         return Task.FromResult(new HelloReply
         {
             Message = "Hello " + request.Name
