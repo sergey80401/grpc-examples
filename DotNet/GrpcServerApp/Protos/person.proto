@@ -1,0 +1,23 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "GrpcServerApp";
+
+package person;
+
+service Personer {
+    rpc VoidTest (VoidRequest) returns (VoidReply);
+    rpc PersonTest (Person) returns (PersonReply);
+}
+
+message VoidRequest { }
+
+message VoidReply { }
+
+message Person {
+    string name = 1;
+    int32 age = 2;
+}
+
+message PersonReply {
+    string message = 1;
+}
